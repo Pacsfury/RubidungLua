@@ -3,6 +3,11 @@ The definitive Rubidung
 
 ---
 
+![Version](https://img.shields.io/badge/version-0.0.1-yellow)
+![Language](https://img.shields.io/badge/language-Lua-blue)
+![Status](https://img.shields.io/badge/status-early_development-orange)
+![Tech](https://img.shields.io/badge/server-NetworkLib(Go)-green)
+
 ## New Features Regarding Java And C++
 
 RubidungLua will bring a lot of new features along its 
@@ -27,6 +32,11 @@ This is the current progress in the game development:
 * Player appears at the @
 * Player position is correctly synchronized
 * Currently, only multiplayer available
+
+## Requirements
+* **Lua**
+* **Löve2D**
+* **Windows**: If you don't use Windows, please start yourself the server
 
 ## The Server
 
@@ -101,12 +111,28 @@ Every tile has its own meaning as found here:
 |------------|----------------------------|
 |**#**       |A wall, covered of spikes!  |
 |**.**       |Free space to walk          |
-|**\$**       |The treasure you want!      |
+|**\$**      |The treasure you want!      |
 |**@**       |You!                        |
 |**O**       |A wall, without spikes!     |
 
+## Contributing
 
-## Change Log
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you want to contribute:
+1. **Fork** the project
+2. Create your **Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. Open a **Pull Request**
+
+If you find any bugs or issues regarding the multiplayer system, remember to open them directly in the [NetworkLib](https://github.com) repository, as it handles all the backend logic!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Changelog
 
 ### 2026-07-15: 
 
@@ -118,3 +144,4 @@ Every tile has its own meaning as found here:
 * Add tile detection
 * Add player start position
 * Add README
+* Add LICENSE
