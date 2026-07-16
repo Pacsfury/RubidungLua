@@ -130,7 +130,7 @@ If you want to contribute:
 4. **Push** to the branch (`git push origin feature/AmazingFeature`)
 5. Open a **Pull Request**
 
-If you find any bugs or issues regarding the multiplayer system, remember to open them directly in the [NetworkLib](https://github.com) repository, as it handles all the backend logic!
+If you find any bugs or issues regarding the multiplayer system, remember to open them directly in the [NetworkLib](https://github.com/Pacsfury/NetworkLib-Backend) repository, as it handles all the backend logic!
 
 ## License
 
