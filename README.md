@@ -117,3 +117,4 @@ Every tile has its own meaning as found here:
 * Add map drawing
 * Add tile detection
 * Add player start position
+* Add README
