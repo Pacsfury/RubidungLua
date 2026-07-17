@@ -6,7 +6,7 @@ The definitive Rubidung
 ![Version](https://img.shields.io/badge/version-0.0.1-yellow)
 ![Language](https://img.shields.io/badge/language-Lua-blue)
 ![Status](https://img.shields.io/badge/status-early_development-orange)
-![Tech](https://img.shields.io/badge/server-NetworkLib(Go)-green)
+![Tech](https://img.shields.io/badge/server-NetworkLib_(Go)-green)
 
 ## New Features Regarding Java And C++
 
