@@ -149,3 +149,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Add player start position
 * Add README
 * Add LICENSE
+
+### 2026-07-18:
+
+* Add win detection

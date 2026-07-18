@@ -5,6 +5,7 @@ local player_x = 0
 local player_y = 0
 local tileSize = 32
 local GRID_SIZE = 32
+local is_victorious = false
 
 function love.load()
     os.execute('start "" network.exe')
@@ -41,6 +42,7 @@ function love.load()
         local server_x = nl:GET("px")
         if not server_x or server_x:find("ERROR") then
             nl:SET("px", tostring(default_x))
+            nl:SET("won", "false")
             player_x = default_x
         else
             player_x = tonumber(server_x) or default_x
@@ -89,6 +91,9 @@ function love.keypressed(key)
         player_y = default_y
         nl:SET("px", tostring(default_x))
         nl:SET("py", tostring(default_y))
+    elseif tile == "$" then
+        nl:SET("won", "true")
+        nl:SIGNAL("#victory")
     end
 
 end
@@ -109,6 +114,10 @@ function love.update(dt)
                 elseif varName == "py" then
                     player_y = tonumber(varValue) or player_y
                 end
+            end
+
+            if server_msg:find("#victory") then
+                is_victorious = true
             end
         else
             break
@@ -131,6 +140,11 @@ function love.draw()
 
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Syncronized position: (" .. player_x .. ", " .. player_y .. ")", 20, 50)
+
+    if is_victorious then
+        love.graphics.setColor(1, 0, 0)
+        love.graphics.print("WON DETECTED", 20, 80)
+    end
 
     if map then
         local mapWidth = #map[1] * tileSize
