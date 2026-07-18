@@ -93,13 +93,13 @@ When you are on the project folder, open the terminal and run:
 love .
 ```
 You will probably see something like "Disconnected (try 
-rerunning game)" in red. Close the window (don't close the 
+rerunning game)" in red (temporary). Close the window (don't close the 
 terminal: that is where the server is executed), and rerun the 
 command.
 
 You can add as many players as you want, as the server will be 
-only opened once. I don't care if it crashes, it's yours :), but 
-any problem with the server, please communicate at the 
+only opened once. I don't care if it crashes, it's yours, you can use it as a sandbox to DoS, 
+or whatever, but any problem with the server, please communicate at the 
 NetworkLib repository. 
 
 Once everyone is playing (or before, if you don't like waiting), 
