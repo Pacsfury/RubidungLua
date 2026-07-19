@@ -3,8 +3,8 @@ local socket = require("socket")
 
 local player_x = 0
 local player_y = 0
-local tileSize = 32
-local GRID_SIZE = 32
+local tileSize = 64
+local GRID_SIZE = 64
 local is_victorious = false
 
 function love.load()
@@ -13,13 +13,13 @@ function love.load()
     local success, msg = nl:init("127.0.0.1", 8080)
     print("[NL] " .. msg)
 
-    love.graphics.setNewFont(16)
+    love.graphics.setNewFont(28)
 
     local waited = 0
     while not nl.is_connected and waited < 2 do
         nl:update_game_network()
         socket.sleep(0.05)
-        waited = waited + 0.05
+        box_waited = waited + 0.05
     end
 
     if nl.is_connected then
@@ -128,10 +128,11 @@ end
 
 function love.draw()
     local map = getMap(1)
+    
     drawMap(map)
 
-    local status = nl.is_connected and "Connected" or "Disconnedcted (try rerunning game)"
-    local status_color = nl.is_connected and {0, 1, 0} or {1, 0, 0}
+    local status = nl.is_connected and "Connected" or "Disconnected (try rerunning game)"
+    local status_color = nl.is_connected and {0.2, 0.8, 0.2} or {1, 0.3, 0.3}
     
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Net: ", 20, 20)
@@ -139,10 +140,10 @@ function love.draw()
     love.graphics.print(status, 80, 20)
 
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print("Syncronized position: (" .. player_x .. ", " .. player_y .. ")", 20, 50)
+    love.graphics.print("Synchronized position: (" .. player_x .. ", " .. player_y .. ")", 20, 50)
 
     if is_victorious then
-        love.graphics.setColor(1, 0, 0)
+        love.graphics.setColor(1, 0.3, 0.3)
         love.graphics.print("WON DETECTED", 20, 80)
     end
 
@@ -158,10 +159,12 @@ function love.draw()
         local draw_x = offsetX + (player_x * GRID_SIZE)
         local draw_y = offsetY + (player_y * GRID_SIZE)
 
-        love.graphics.setColor(0.2, 0.6, 1, 0.6)
-        love.graphics.rectangle("fill", draw_x, draw_y, GRID_SIZE, GRID_SIZE)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.rectangle("line", draw_x, draw_y, GRID_SIZE, GRID_SIZE)
+        love.graphics.setColor(0.2, 0.6, 1, 0.3)
+        love.graphics.rectangle("fill", draw_x, draw_y, GRID_SIZE, GRID_SIZE, 6, 6)
+        love.graphics.setColor(0.4, 0.8, 1)
+        love.graphics.setLineWidth(2)
+        love.graphics.rectangle("line", draw_x, draw_y, GRID_SIZE, GRID_SIZE, 6, 6)
+        love.graphics.setLineWidth(1)
     end
 end
 
@@ -201,13 +204,24 @@ function drawMap(map)
             local cellY = offsetY + (y - 1) * tileSize
             
             if character == '#' then
-                love.graphics.setColor(0.5, 0.5, 0.5) 
+                love.graphics.setColor(0.25, 0.27, 0.3) 
             elseif character == '@' then
-                love.graphics.setColor(0.2, 0.8, 0.2)
+                love.graphics.setColor(0.2, 0.7, 0.3)
             elseif character == '$' then
-                love.graphics.setColor(0.9, 0.8, 0.1)
+                love.graphics.setColor(0.9, 0.7, 0.1)
             else
-                love.graphics.setColor(0.3, 0.3, 0.3)
+                love.graphics.setColor(0.15, 0.17, 0.2)
+            end
+            love.graphics.rectangle("fill", cellX + 2, cellY + 2, tileSize - 4, tileSize - 4, 4, 4)
+
+            if character == '#' then
+                love.graphics.setColor(0.5, 0.55, 0.6) 
+            elseif character == '@' then
+                love.graphics.setColor(1, 1, 1)
+            elseif character == '$' then
+                love.graphics.setColor(1, 0.9, 0.3)
+            else
+                love.graphics.setColor(0.4, 0.4, 0.45)
             end
 
             local textWidth = font:getWidth(character)

@@ -37,6 +37,8 @@ local success, msg = nl:init("127.0.0.1", 8080)
 * Player position is correctly synchronized
 * Currently, only multiplayer available
 
+**IMPORTANT: When running for the first time, a terminal will appear. That's the server. When it first appears, the game may block. Close the game and open again to be connected to the server.**
+
 ## Requirements
 * **Lua**
 * **Löve2D**
@@ -154,3 +156,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 * Add win detection
 * Organize better files so adding menus and so is easier
+
+### 2026-07-19:
+
+* Add basic menu
+* Better visuals
