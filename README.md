@@ -24,18 +24,17 @@ our roadmap for making RubidungLua the definitive one:
 * More levels
 
 This is the current progress in the game development:
-* When you enter for the first time, the server is run locally at `localhost:8080`, changeable in main.lua:
+* When you enter for the first time, the server is run locally at `localhost:8080`, changeable in main.lua and serverinit.lua:
 ```lua
 local success, msg = nl:init("127.0.0.1", 8080)
 ```
 
-* As many as want can connect just by running the game
-* The first time, it will say "disconnected". Close the game and rerun it
+* As many as want can connect clicking "Init Server"
 * Map and tile drawing/detection system made to easily add new levels
 * Spiky wall detection
 * Player appears at the @
 * Player position is correctly synchronized
-* Currently, only multiplayer available
+* Multiplayer and Local are available
 
 **IMPORTANT: When hosting the game, a terminal will appear. That's the server. Don't close when the game is running, it breaks the fun :)**
 
