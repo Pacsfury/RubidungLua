@@ -20,11 +20,11 @@ function love.load()
         default_x = 0
         default_y = 0
         local map = getMap(1)
-        
+
         if map then
             for y, row in ipairs(map) do
                 for x, character in ipairs(row) do
-                    if character == '@' then
+                    if character == "@" then
                         default_x = x - 1
                         default_y = y - 1
                         break
@@ -49,7 +49,7 @@ function love.load()
         else
             player_y = tonumber(server_y) or default_y
         end
-        
+
         nl:SUB("px")
         nl:SUB("py")
 
@@ -57,9 +57,10 @@ function love.load()
     end
 end
 
-
 function love.keypressed(key)
-    if not nl.is_connected then return end
+    if not nl.is_connected then
+        return
+    end
 
     if key == "w" or key == "up" then
         player_y = player_y - 1
@@ -89,18 +90,19 @@ function love.keypressed(key)
         nl:SET("won", "true")
         nl:SIGNAL("#victory")
     end
-
 end
 
 function love.update(dt)
-    if not nl.is_connected then return end
+    if not nl.is_connected then
+        return
+    end
 
     local safety_counter = 0
     while safety_counter < 10 do
         local server_msg = nl:update_game_network()
         if server_msg then
             print("[Server]: " .. server_msg)
-            
+
             local varName, varValue = server_msg:match("#subscribed_var_changed%s+(%S+)%s+(%S+)")
             if varName and varValue then
                 if varName == "px" then
@@ -122,12 +124,12 @@ end
 
 function love.draw()
     local map = getMap(1)
-    
+
     drawMap(map)
 
     local status = nl.is_connected and "Connected" or "Disconnected (try rerunning game)"
     local status_color = nl.is_connected and {0.2, 0.8, 0.2} or {1, 0.3, 0.3}
-    
+
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Net: ", 20, 20)
     love.graphics.setColor(status_color)
@@ -163,20 +165,22 @@ function love.draw()
 end
 
 function getMap(id)
-    if id==1 then
+    if id == 1 then
         return {
-            {'#', '#', '#', '#', '#'},
-            {'#', '.', '.', '$', '#'},
-            {'#', '#', '#', '.', '#'},
-            {'#', '.', '.', '.', '#'},
-            {'#', '@', '#', '#', '#'}
+            {"#", "#", "#", "#", "#"},
+            {"#", ".", ".", "$", "#"},
+            {"#", "#", "#", ".", "#"},
+            {"#", ".", ".", ".", "#"},
+            {"#", "@", "#", "#", "#"}
         }
     end
     return nil
 end
 
 function drawMap(map)
-    if not map then return end
+    if not map then
+        return
+    end
 
     local mapHeight = #map * tileSize
     local mapWidth = 0
@@ -196,23 +200,23 @@ function drawMap(map)
         for x, character in ipairs(row) do
             local cellX = offsetX + (x - 1) * tileSize
             local cellY = offsetY + (y - 1) * tileSize
-            
-            if character == '#' then
-                love.graphics.setColor(0.25, 0.27, 0.3) 
-            elseif character == '@' then
+
+            if character == "#" then
+                love.graphics.setColor(0.25, 0.27, 0.3)
+            elseif character == "@" then
                 love.graphics.setColor(0.2, 0.7, 0.3)
-            elseif character == '$' then
+            elseif character == "$" then
                 love.graphics.setColor(0.9, 0.7, 0.1)
             else
                 love.graphics.setColor(0.15, 0.17, 0.2)
             end
             love.graphics.rectangle("fill", cellX + 2, cellY + 2, tileSize - 4, tileSize - 4, 4, 4)
 
-            if character == '#' then
-                love.graphics.setColor(0.5, 0.55, 0.6) 
-            elseif character == '@' then
+            if character == "#" then
+                love.graphics.setColor(0.5, 0.55, 0.6)
+            elseif character == "@" then
                 love.graphics.setColor(1, 1, 1)
-            elseif character == '$' then
+            elseif character == "$" then
                 love.graphics.setColor(1, 0.9, 0.3)
             else
                 love.graphics.setColor(0.4, 0.4, 0.45)
@@ -227,16 +231,18 @@ function drawMap(map)
             love.graphics.print(character, textX, textY)
         end
     end
-    
+
     love.graphics.setColor(1, 1, 1)
 end
 
 function getTile(map, x, y)
-    if not map then return "#" end
-    
-    if map[y+1] then
-        return map[y+1][x+1]
+    if not map then
+        return "#"
     end
-    
+
+    if map[y + 1] then
+        return map[y + 1][x + 1]
+    end
+
     return "#"
 end

@@ -13,11 +13,13 @@ end
 function love.update(dt)
     if not server_ready and connection_attempts < max_attempts then
         local success, msg = nl:init("127.0.0.1", 8080)
-        
+
         if success then
             server_ready = true
             dofile("multiplayer.lua")
-            if love.load then love.load() end
+            if love.load then
+                love.load()
+            end
         else
             connection_attempts = connection_attempts + 1
             socket.sleep(0.2)

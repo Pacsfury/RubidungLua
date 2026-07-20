@@ -165,3 +165,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Fix server opening issues
 * Server opens with another button
 * Add local mode
+* Formatted code
+* Now clients see received data
