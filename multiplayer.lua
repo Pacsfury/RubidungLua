@@ -8,18 +8,12 @@ local GRID_SIZE = 64
 local is_victorious = false
 
 function love.load()
-    os.execute('start "" network.exe')
-
-    local success, msg = nl:init("127.0.0.1", 8080)
-    print("[NL] " .. msg)
-
-    love.graphics.setNewFont(28)
-
-    local waited = 0
-    while not nl.is_connected and waited < 2 do
-        nl:update_game_network()
-        socket.sleep(0.05)
-        box_waited = waited + 0.05
+    if not nl.is_connected then
+        local success, msg = nl:init("127.0.0.1", 8080)
+        if not success then
+            print("[ERROR] Failed to connect to server: " .. msg)
+            return
+        end
     end
 
     if nl.is_connected then

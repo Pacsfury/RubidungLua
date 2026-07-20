@@ -94,10 +94,7 @@ When you are on the project folder, open the terminal and run:
 ```bash
 love .
 ```
-You will probably see something like "Disconnected (try 
-rerunning game)" in red (temporary). Close the window (don't close the 
-terminal: that is where the server is executed), and rerun the 
-command.
+Then, to start a multiplayer game, click "Init Server". Wait. Then, you will automatically enter the game. You will see a terminal has been opened. That's the server console. For more players to enter, click "Multiplayer".
 
 You can add as many players as you want, as the server will be 
 only opened once. I don't care if it crashes, it's yours, you can use it as a sandbox to DoS, 
@@ -161,3 +158,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 * Add basic menu
 * Better visuals
+
+### 2026-07-20:
+* Fix server opening issues
+* Server opens with another button

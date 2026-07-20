@@ -7,7 +7,8 @@ function love.load()
 
     buttons = {
         { x = 200, y = 200, w = 400, h = 60, text = "Local Mode", action = "local.lua", isHovered = false },
-        { x = 200, y = 280, w = 400, h = 60, text = "Multiplayer", action = "multiplayer.lua", isHovered = false }
+        { x = 200, y = 280, w = 400, h = 60, text = "Multiplayer", action = "multiplayer.lua", isHovered = false },
+        { x = 200, y = 360, w = 400, h = 60, text = "Open Server", action = "serverinit.lua", isHovered = false }
     }
 end
 
