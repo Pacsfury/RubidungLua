@@ -37,12 +37,12 @@ local success, msg = nl:init("127.0.0.1", 8080)
 * Player position is correctly synchronized
 * Currently, only multiplayer available
 
-**IMPORTANT: When running for the first time, a terminal will appear. That's the server. When it first appears, the game may block. Close the game and open again to be connected to the server.**
+**IMPORTANT: When hosting the game, a terminal will appear. That's the server. Don't close when the game is running, it breaks the fun :)**
 
 ## Requirements
 * **Lua**
 * **Löve2D**
-* **Windows**: If you don't use Windows, please start yourself the server
+* _**Windows**_: If you don't use Windows, please start yourself the server
 
 ## The Server
 
@@ -106,6 +106,8 @@ you can start moving the player around. You will see that if it
 touches a # you restart. Every tile represents something, as 
 told in the next section.
 
+You can also play locally clicking "Local".
+
 ## Understanding The Map
 
 Every tile has its own meaning as found here:
@@ -162,3 +164,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### 2026-07-20:
 * Fix server opening issues
 * Server opens with another button
+* Add local mode
