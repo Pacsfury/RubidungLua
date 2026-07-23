@@ -5,8 +5,19 @@ local server_ready = false
 local connection_attempts = 0
 local max_attempts = 50
 
+local function open_server()
+    local is_windows = os.getenv("COMSPEC") or os.getenv("OS") == "Windows_NT"
+    
+    if is_windows then
+        os.execute('start "" "network.exe"')
+    else
+        os.execute('./network.exe &')
+    end
+end
+
+
 function love.load()
-    os.execute('start "" network.exe')
+    open_server()
     socket.sleep(1.0)
 end
 
