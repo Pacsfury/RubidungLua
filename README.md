@@ -41,7 +41,6 @@ local success, msg = nl:init("127.0.0.1", 8080)
 ## Requirements
 * **Lua**
 * **Löve2D**
-* _**Windows**_: If you don't use Windows, please start yourself the server
 
 ## The Server
 
@@ -166,3 +165,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Add local mode
 * Formatted code
 * Now clients see received data
+
+### 2026-07-23:
+* Now server opens ok also if you're not using Windows
